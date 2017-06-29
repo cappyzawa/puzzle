@@ -5,3 +5,13 @@ scala:
 
 script:
   - sbt test
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot
+
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION test # 各々のプロジェクトのテスト用コマンドの最後に、以下の2行追加
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
