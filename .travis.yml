@@ -1,22 +1,12 @@
 language: scala
-
+sudo: true
 scala:
-  - 2.12.1
-
-jdk:
-  - oraclejdk8
-
-install:
-  - pip install --user codecov
+   - 2.12.1
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION test
-  - sbt coverageReport
-  - sbt coverageAggregate
+- sbt ++$TRAVIS_SCALA_VERSION clean coverage test && sbt coverageAggregate
 
-addons:
-  code_climate:
-    repo_token: 2f24462fba66a24600cdfa79bc5df039f4a091d7ad43f44075564506c6f51b65
-
+before_install:
+  - pip install --user codecov
 after_success:
   - codecov
