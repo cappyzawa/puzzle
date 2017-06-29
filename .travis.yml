@@ -1,12 +1,14 @@
 language: scala
 
+sudo: false
+
 cache:
   directories:
     - $HOME/.ivy2/cache
     - $HOME/.sbt/boot
 
 scala:
-    - 2.12.1
+  - 2.12.1
 
 jdk:
   - oraclejdk8
@@ -14,4 +16,7 @@ jdk:
 script:
   - sbt test
 
-
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov
