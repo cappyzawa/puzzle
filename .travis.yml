@@ -1,22 +1,21 @@
 language: scala
 
 scala:
-  - 2.12.1
-
-jdk:
-  - oraclejdk8
-
-install:
-  - pip install --user codecov
+   - 2.11.7
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION test
-  - sbt coverageReport
-  - sbt coverageAggregate
+  - sbt test
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot
+
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION test # 各々のプロジェクトのテスト用コマンドの最後に、以下の2行追加
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
 
 addons:
   code_climate:
-    repo_token: 2f24462fba66a24600cdfa79bc5df039f4a091d7ad43f44075564506c6f51b65
-
-after_success:
-  - codecov
+    repo_token: 6f130a17e8fffbe16c094e81998b552492a72dff8b818056df3973dda43476e9

@@ -25,4 +25,3 @@ class Puzzle02Spec extends FlatSpec with Matchers{
     Puzzle02.calc(2, "", 8) shouldEqual "28"
   }
 }
-
