@@ -15,3 +15,7 @@ script:
   - sbt ++$TRAVIS_SCALA_VERSION test # 各々のプロジェクトのテスト用コマンドの最後に、以下の2行追加
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+
+addons:
+  code_climate:
+    repo_token: 6f130a17e8fffbe16c094e81998b552492a72dff8b818056df3973dda43476e9
