@@ -13,4 +13,10 @@ script:
   - sbt ++$TRAVIS_SCALA_VERSION test
   - sbt coverageReport
   - sbt coverageAggregate
-  - codecov --token=${CODECOV_KEY}
+  - codecov
+
+addons:
+  code_climate:
+    repo_token: 2f24462fba66a24600cdfa79bc5df039f4a091d7ad43f44075564506c6f51b65
+
+after_success:
