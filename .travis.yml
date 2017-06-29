@@ -32,5 +32,4 @@ script:
 after_success:
   ### Report test coverage ####################################################
   - sbt coverageReport     # generate Cobertura coverage report
-  - sbt coverageAggregate  # aggregate coverage reports from subprojects
-  - sbt codacyCoverage     # report coverage to Codacy
+  - sbt coverageAggregate  # aggregate coverage reports from subproject
