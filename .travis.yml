@@ -6,23 +6,13 @@ scala:
 jdk:
   - oraclejdk8
 
-cache:
-  directories:
-    - $HOME/.ivy2/cache
-    - $HOME/.sbt/boot
+script:
+  - sbt test
+# cache:
+#   directories:
+#     - $HOME/.ivy2/cache
+#     - $HOME/.sbt/boot
 
 addons:
   code_climate:
     repo_token: 99ca8eebe792957479f1daa885a007451e7ec724526c542d0fc7e217c22391a9
-
-script:
-  ### Script to build Ionesco #################################################
-  - sbt clean coverage test
-    # remove SBT lockfile and Ivy properties so they don't get cached
-  - find $HOME/.sbt -name "*.lock" | xargs rm
-  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
-
-after_success:
-  ### Report test coverage ####################################################
-  - sbt coverageReport     # generate Cobertura coverage report
-  - sbt coverageAggregate  # aggregate coverage reports from subproject
