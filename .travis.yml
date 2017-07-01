@@ -8,10 +8,6 @@ jdk:
 
 script:
   - sbt test
-# cache:
-#   directories:
-#     - $HOME/.ivy2/cache
-#     - $HOME/.sbt/boot
 
 addons:
   code_climate:
