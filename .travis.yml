@@ -1,10 +1,12 @@
 language: scala
 
+sudo: required
+
 scala:
    - 2.11.7
 
-script:
-  - sbt test
+jdk:
+  - oraclejdk8
 
 cache:
   directories:
