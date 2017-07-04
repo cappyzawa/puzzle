@@ -8,7 +8,7 @@ lazy val root = (project in file(".")).
       version      := "0.1.0-SNAPSHOT"
     )),
     name := "puzzle",
-    fork in Test := true
+    fork in Test := true,
     libraryDependencies ++= Seq(
       scalaTest % Test,
       "org.specs2" %% "specs2-core" % "3.9.1" % "test"
