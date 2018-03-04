@@ -7,7 +7,7 @@ jdk:
   - oraclejdk8
 
 script:
-  - sbt test
+  - sbt 'testOnly Puzzle01Spec'
 
 addons:
   code_climate:
