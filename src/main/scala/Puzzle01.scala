@@ -1,19 +1,22 @@
 object Puzzle01 {
-  def main(args: Array[String]): Unit ={
-    for(answer <- 11 to 10000 by 2){
-      val numList = answer.toString.toList
-      val numReverseList = numList.reverse
-      val binaryNum = answer.toBinaryString
-      val binaryNumList = binaryNum.toList
-      val binaryNumReverseList = binaryNumList.reverse
-      val octalNum = answer.toOctalString
-      val octalNumList = octalNum.toList
-      val octalNumReverseList = octalNumList.reverse
-      if((numList == numReverseList) &&
-        (binaryNumList == binaryNumReverseList) &&
-        (octalNumList == octalNumReverseList)){
-        println("answer: " + answer)
-      }
-    }
+  def main(args: Array[String]): Unit = {
+    val numList = (10 to 1000).toList
+    val answer = numList.filter(palindrome)
+    println(answer.head)
+
+  }
+
+  def palindrome(i: Int): Boolean = {
+    // 10進数で回文が成立するか
+    val dec = i.toString.toList
+    val decRev = dec.reverse
+    val decMatches: Boolean = dec == decRev
+    val bin = i.toBinaryString.toList
+    val binRev = bin.reverse
+    val binMatches: Boolean = bin == binRev
+    val oct = i.toOctalString.toList
+    val octRev = oct.reverse
+    val octMatches: Boolean = oct == octRev
+    decMatches && binMatches && octMatches
   }
 }
